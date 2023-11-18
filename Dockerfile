@@ -1,7 +1,8 @@
-FROM node:20
+FROM node:18
 
+RUN mkdir -p /usr/src/app
 #Workind Dir
-WORKDIR D:/.cosas/.universidad/.IHC/App NodoJS/ferroshopapp
+WORKDIR /app
 
 #Copy packages Json Files
 COPY package*.json ./
@@ -10,8 +11,6 @@ RUN npm install
 
 COPY . .
 
+EXPOSE 3000
+
 RUN npm run build
-
-EXPOSE 1337
-
-CMD ["node", "build/server.js"] 
